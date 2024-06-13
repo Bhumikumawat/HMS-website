@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Medical History Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+    }
+
+    #medical-history-display {
+      margin-top: 30px;
+      border-top: 2px solid #ccc;
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Patient Medical History Form</h1>
+    <!-- Medical History Form -->
+    <form id="medical-history-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select class="form-control" id="gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" class="form-control" id="dob" name="dob" required>
+      </div>
+      <!-- Add more fields for medical history -->
+      <div class="form-group">
+        <label for="allergies">Allergies:</label>
+        <textarea class="form-control" id="allergies" name="allergies" rows="3"></textarea>
+      </div>
+      <!-- Add more fields for medical history -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- Medical History Display Section -->
+    <div id="medical-history-display">
+      <!-- Display medical history details here using JavaScript -->
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and jQuery (needed for Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    // JavaScript code for handling form submission and displaying medical history
+    document.getElementById('medical-history-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      // Get form data
+      var formData = new FormData(this);
+
+      // Display medical history
+      displayMedicalHistory(formData);
+    });
+
+    function displayMedicalHistory(formData) {
+      // Create HTML string to display medical history
+      var html = '<h2>Medical History Details</h2>';
+      html += '<p><strong>Name:</strong> ' + formData.get('name') + '</p>';
+      html += '<p><strong>Gender:</strong> ' + formData.get('gender') + '</p>';
+      html += '<p><strong>Date of Birth:</strong> ' + formData.get('dob') + '</p>';
+      html += '<p><strong>Allergies:</strong> ' + formData.get('allergies') + '</p>';
+      // Add more fields as needed
+
+      // Display medical history
+      document.getElementById('medical-history-display').innerHTML = html;
+    }
+  </script>
+</body>
+</html>
